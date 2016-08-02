@@ -5,8 +5,8 @@ $(document).ready(function() {
     var city = $('#location').val();
     $('#location').val("");
     $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey).then(function(response) {
-      var celsius = new Temperature(response.main.temp);
-      $('.showTemperature').html("The temperature in " + city + " is " + response.main.temp + "K, " + celsius.celsius + "&#x2103 .");
+      var kelvin = new Temperature(response.main.temp);
+      $('.showTemperature').html("The temperature in " + city + " is " + response.main.temp + "K, " + kelvin.celsius + "&#x2103" + kelvin.fahrenheit + ", &#x2109.");
     }).fail(function(error) {
       $('.showTemperature').text(error.responseJSON.message);
     });
